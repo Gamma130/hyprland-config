@@ -1,0 +1,90 @@
+# Starship Configuration with Matugen Colors
+# Place this as a TEMPLATE for matugen (e.g., ~/.config/matugen/templates/starship.toml)
+# Then configure matugen to output to: ~/.config/starship.toml
+
+# Prompt format - customize the order and elements shown
+format = """
+[┌─](bold {{colors.primary}})$username$hostname$directory$git_branch$git_status
+[└─>](bold {{colors.primary}}) """
+
+# Alternatively, use a simpler single-line format:
+# format = "$directory$git_branch$git_status$character"
+
+[character]
+success_symbol = "[➜](bold {{colors.primary}})"
+error_symbol = "[➜](bold {{colors.error}})"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold {{colors.secondary}}"
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "bold {{colors.tertiary}}"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold {{colors.error}}"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[git_commit]
+tag_symbol = " 🏷  "
+tag_disabled = false
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration](bold {{colors.on_surface_variant}}) "
+
+[username]
+show_always = false
+format = "[$user]($style)@"
+style_user = "bold {{colors.primary}}"
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) in "
+style = "bold {{colors.primary}}"
+
+[time]
+disabled = true
+format = "🕙[$time]($style) "
+style = "bold {{colors.on_surface}}"
+
+# Language-specific modules (shown when in relevant projects)
+[python]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "{{colors.tertiary}}"
+
+[nodejs]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "{{colors.tertiary}}"
+
+[rust]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "{{colors.tertiary}}"
+
+[docker_context]
+symbol = " "
+format = "[$symbol$context]($style) "
+style = "{{colors.tertiary}}"
+
+# Package version
+[package]
+symbol = "📦 "
+format = "[$symbol$version]($style) "
+style = "{{colors.secondary}}"

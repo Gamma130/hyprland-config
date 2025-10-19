@@ -1,0 +1,70 @@
+@import "colors.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font", Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @on_surface;
+}
+
+tooltip {
+  background: @background;
+}
+tooltip label {
+  color: @on_surface;
+}
+
+#workspaces {
+    margin: 10px 5px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: @surface;
+    color: @on_surface;
+    border-radius: 8px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+#workspaces button.visible:not(.active) {
+    background-color: @secondary_container;
+    color: @on_secondary_container;
+}
+p
+#workspaces button.empty {
+    background-color: @surface_container;
+    color: @on_surface_variant;
+    opacity: 0.6;
+}
+
+#workspaces button.urgent {
+    background-color: @error;
+    color: @on_error;
+    animation: urgent-pulse 1s ease infinite;
+}
+#workspaces button:hover {
+    background-color: @surface_container_high;
+} 
+
+#clock,
+#battery,
+#pulseaudio,
+#network {
+    padding: 5px 15px;
+    margin: 10px 10px 0 10px;
+    border-radius: 100px;
+    background-color: @primary;
+    color: @on_primary;
+}
+
