@@ -19,8 +19,11 @@ tooltip {
 tooltip label {
   color: @on_surface;
 }
-
+#window {
+	margin: 7px;
+}
 #workspaces {
+	color: @on_primary;
     margin: 10px 5px;
 }
 
