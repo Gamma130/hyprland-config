@@ -10,6 +10,7 @@
         "network",
         "pulseaudio",
         "battery",
+        "custom/power",
         "clock"
     ],
     
@@ -72,5 +73,10 @@
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50
-    }
+    },
+    "custom/power": {
+        "format": "⏻",
+    "on-click": "wlogout",
+    "tooltip": false
+}
 }

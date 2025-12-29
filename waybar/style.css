@@ -63,7 +63,8 @@ p
 #clock,
 #battery,
 #pulseaudio,
-#network {
+#network,
+#custom-power{
     padding: 5px 15px;
     margin: 10px 10px 0 10px;
     border-radius: 100px;

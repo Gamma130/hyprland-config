@@ -1,90 +1,146 @@
-# Starship Configuration with Matugen Colors
-# Place this as a TEMPLATE for matugen (e.g., ~/.config/matugen/templates/starship.toml)
-# Then configure matugen to output to: ~/.config/starship.toml
-
-# Prompt format - customize the order and elements shown
 format = """
-[┌─](bold {{colors.primary}})$username$hostname$directory$git_branch$git_status
-[└─>](bold {{colors.primary}}) """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$lua\
+$nodejs\
+$golang\
+$haskell\
+$rust\
+$ruby\
+$package\
+$aws\
+$docker_context\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
 
-# Alternatively, use a simpler single-line format:
-# format = "$directory$git_branch$git_status$character"
-
-[character]
-success_symbol = "[➜](bold {{colors.primary}})"
-error_symbol = "[➜](bold {{colors.error}})"
+add_newline = true
+palette = 'matugen'  # Switch to use matugen colors
 
 [directory]
+style = 'bold fg:color1'  # Using matugen color
+format = '[$path ]($style)'
 truncation_length = 3
-truncate_to_repo = true
-style = "bold {{colors.secondary}}"
-read_only = " 󰌾"
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
 
 [git_branch]
-symbol = " "
-style = "bold {{colors.tertiary}}"
-format = "[$symbol$branch]($style) "
+style = 'fg:color8'  # Using matugen color
+symbol = ' '
+format = '[on](color3) [$symbol$branch ]($style)'
 
 [git_status]
-style = "bold {{colors.error}}"
-format = "([$all_status$ahead_behind]($style) )"
-conflicted = "="
-ahead = "⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-untracked = "?"
-stashed = "$"
-modified = "!"
-staged = "+"
-renamed = "»"
-deleted = "✘"
+style = 'fg:color8'
+format = '([$all_status$ahead_behind]($style) )'
 
-[git_commit]
-tag_symbol = " 🏷  "
-tag_disabled = false
+[fill]
+symbol = ' '
+
+[python]
+style = 'color9'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+[lua]
+symbol = ' '
+
+[nodejs]
+style = 'color1'
+symbol = ' '
+
+[golang]
+style = 'color1'
+symbol = ' '
+
+[haskell]
+style = 'color1'
+symbol = ' '
+
+[rust]
+style = 'color2'
+symbol = ' '
+
+[ruby]
+style = 'color1'
+symbol = ' '
+
+[package]
+symbol = '󰏗 '
+
+[aws]
+symbol = ' '
+style = 'color2'
+format = '[$symbol($profile )(\[$duration\] )]($style)'
+
+[docker_context]
+symbol = ' '
+style = 'color8'
+format = '[$symbol]($style) $path'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+detect_extensions = ['Dockerfile']
+
+[jobs]
+symbol = ' '
+style = 'color2'
+number_threshold = 1
+format = '[$symbol]($style)'
 
 [cmd_duration]
 min_time = 500
-format = "took [$duration](bold {{colors.on_surface_variant}}) "
+style = 'fg:color3'
+format = '[$duration]($style)'
 
-[username]
-show_always = false
-format = "[$user]($style)@"
-style_user = "bold {{colors.primary}}"
+[character]
+success_symbol = "[➜](color9 bold)"
+error_symbol = "[➜](color2)"
 
-[hostname]
-ssh_only = true
-format = "[$hostname]($style) in "
-style = "bold {{colors.primary}}"
+# Matugen dynamic colors
+[palettes.matugen]
+color1 = '{{colors.primary_fixed_dim.default.hex}}'
+color2 = '{{colors.on_primary.default.hex}}'
+color3 = '{{colors.on_surface_variant.default.hex}}'
+color4 = '{{colors.surface_container.default.hex}}'
+color5 = '{{colors.on_primary.default.hex}}'
+color6 = '{{colors.surface_dim.default.hex}}'
+color7 = '{{colors.surface.default.hex}}'
+color8 = '{{colors.primary.default.hex}}'
+color9 = '{{colors.tertiary.default.hex}}'
 
-[time]
-disabled = true
-format = "🕙[$time]($style) "
-style = "bold {{colors.on_surface}}"
+# Keep your static palettes if you want to switch manually
+[palettes.nord]
+dark_blue = '#5E81AC'
+blue = '#81A1C1'
+teal = '#88C0D0'
+red = '#BF616A'
+orange = '#D08770'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+purple = '#B48EAD'
+gray = '#434C5E'
+black = '#2E3440'
+white = '#D8DEE9'
 
-# Language-specific modules (shown when in relevant projects)
-[python]
-symbol = " "
-format = "[$symbol$version]($style) "
-style = "{{colors.tertiary}}"
-
-[nodejs]
-symbol = " "
-format = "[$symbol$version]($style) "
-style = "{{colors.tertiary}}"
-
-[rust]
-symbol = " "
-format = "[$symbol$version]($style) "
-style = "{{colors.tertiary}}"
-
-[docker_context]
-symbol = " "
-format = "[$symbol$context]($style) "
-style = "{{colors.tertiary}}"
-
-# Package version
-[package]
-symbol = "📦 "
-format = "[$symbol$version]($style) "
-style = "{{colors.secondary}}"
+[palettes.onedark]
+dark_blue = '#61afef'
+blue = '#56b6c2'
+red = '#e06c75'
+green = '#98c379'
+purple = '#c678dd'
+cyan = '#56b6c2'
+orange = '#be5046'
+yellow = '#e5c07b'
+gray = '#828997'
+white = '#abb2bf'
+black = '#2c323c'

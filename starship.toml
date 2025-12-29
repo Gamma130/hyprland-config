@@ -19,10 +19,10 @@ $line_break\
 $character"""
 
 add_newline = true
-palette = 'nord'
+palette = 'matugen'  # Switch to use matugen colors
 
 [directory]
-style = 'bold fg:dark_blue'
+style = 'bold fg:color1'  # Using matugen color
 format = '[$path ]($style)'
 truncation_length = 3
 truncation_symbol = '…/'
@@ -30,78 +30,95 @@ truncate_to_repo = false
 
 [directory.substitutions]
 'Documents' = '󰈙'
-'Downloads' = ' '
-'Music' = ' '
-'Pictures' = ' '
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
 
 [git_branch]
-style = 'fg:green'
-symbol = ' '
-format = '[on](white) [$symbol$branch ]($style)'
+style = 'fg:color8'  # Using matugen color
+symbol = ' '
+format = '[on](color3) [$symbol$branch ]($style)'
 
 [git_status]
-style = 'fg:green'
+style = 'fg:color8'
 format = '([$all_status$ahead_behind]($style) )'
 
 [fill]
 symbol = ' '
 
 [python]
-style = 'teal'
-symbol = ' '
+style = 'color9'
+symbol = ' '
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 pyenv_version_name = true
 pyenv_prefix = ''
 
 [lua]
-symbol = ' '
+symbol = ' '
 
 [nodejs]
-style = 'blue'
-symbol = ' '
+style = 'color1'
+symbol = ' '
 
 [golang]
-style = 'blue'
-symbol = ' '
+style = 'color1'
+symbol = ' '
 
 [haskell]
-style = 'blue'
-symbol = ' '
+style = 'color1'
+symbol = ' '
 
 [rust]
-style = 'orange'
-symbol = ' '
+style = 'color2'
+symbol = ' '
 
 [ruby]
-style = 'blue'
-symbol = ' '
+style = 'color1'
+symbol = ' '
 
 [package]
 symbol = '󰏗 '
 
 [aws]
-symbol = ' '
-style = 'yellow'
+symbol = ' '
+style = 'color2'
 format = '[$symbol($profile )(\[$duration\] )]($style)'
 
 [docker_context]
-symbol = ' '
-style = 'fg:#06969A'
+symbol = ' '
+style = 'color8'
 format = '[$symbol]($style) $path'
 detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
 detect_extensions = ['Dockerfile']
 
 [jobs]
-symbol = ' '
-style = 'red'
+symbol = ' '
+style = 'color2'
 number_threshold = 1
 format = '[$symbol]($style)'
 
 [cmd_duration]
 min_time = 500
-style = 'fg:gray'
+style = 'fg:color3'
 format = '[$duration]($style)'
 
+[character]
+success_symbol = "[➜](color9 bold)"
+error_symbol = "[➜](color2)"
+
+# Matugen dynamic colors
+[palettes.matugen]
+color1 = '#a3c9fe'
+color2 = '#00315b'
+color3 = '#c3c6cf'
+color4 = '#1d2024'
+color5 = '#00315b'
+color6 = '#111418'
+color7 = '#111418'
+color8 = '#a3c9fe'
+color9 = '#d8bde3'
+
+# Keep your static palettes if you want to switch manually
 [palettes.nord]
 dark_blue = '#5E81AC'
 blue = '#81A1C1'
@@ -113,17 +130,17 @@ yellow = '#EBCB8B'
 purple = '#B48EAD'
 gray = '#434C5E'
 black = '#2E3440'
-white='#D8DEE9'
+white = '#D8DEE9'
 
 [palettes.onedark]
-dark_blue='#61afef'
-blue='#56b6c2'
-red='#e06c75'
-green='#98c379'
-purple='#c678dd'
-cyan='#56b6c2'
-orange='#be5046'
-yellow='#e5c07b'
-gray='#828997'
-white ='#abb2bf'
-black='#2c323c'
+dark_blue = '#61afef'
+blue = '#56b6c2'
+red = '#e06c75'
+green = '#98c379'
+purple = '#c678dd'
+cyan = '#56b6c2'
+orange = '#be5046'
+yellow = '#e5c07b'
+gray = '#828997'
+white = '#abb2bf'
+black = '#2c323c'
